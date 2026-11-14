@@ -1,0 +1,11 @@
+*.img
+*.bin
+*.fd
+*.elf
+*.dtb
+*.dtbo
+*.zip
+*.log
+/dumps/
+/captures/
+/local/

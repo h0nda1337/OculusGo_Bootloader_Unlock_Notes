@@ -1,0 +1,9 @@
+# evidence: historical
+# Curated, identifier-free excerpt from the 2026-10-25 observation.
+product: pacific
+secure: yes
+(bootloader) Secure boot: true
+(bootloader) Verity enabled: false
+(bootloader) Verified boot enabled: false
+(bootloader) Device unlocked: true
+(bootloader) Device critical unlocked: false

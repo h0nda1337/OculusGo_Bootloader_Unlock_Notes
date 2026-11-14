@@ -1,0 +1,9 @@
+# evidence: synthetic
+# Fictional contrast fixture; not a recorded pre-unlock state.
+product: pacific
+secure: yes
+(bootloader) Secure boot: true
+(bootloader) Verity enabled: true
+(bootloader) Verified boot enabled: true
+(bootloader) Device unlocked: false
+(bootloader) Device critical unlocked: false

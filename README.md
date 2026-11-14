@@ -19,3 +19,15 @@ En Fastboot, `Secure boot: true`, `Device unlocked: true` y `Device critical unl
 ## Comprobar el estado sin cambiarlo
 
 Si el visor ya está en Fastboot, `fastboot devices` comprueba que el PC lo detecta. En el Oculus Go, `fastboot -s <serial-local> oem device-info` consulta los indicadores anteriores. Sustituye `<serial-local>` por el identificador de tu visor; ocúltalo antes de compartir resultados, porque puede aparecer también en la salida del segundo comando. Ninguna consulta prueba el arranque de una imagen.
+
+## Herramienta y experimentos independientes
+
+`tools/boot_state.py` lee capturas UTF-8 de Fastboot ya guardadas y devuelve únicamente campos permitidos en JSON. No ejecuta ADB, Fastboot ni otros programas. Usa Python 3 sin dependencias externas.
+
+```sh
+python tools/boot_state.py inspect examples/pacific-observed.txt
+python tools/boot_state.py compare examples/pacific-locked-synthetic.txt examples/pacific-observed.txt
+python -m unittest discover -s tests -v
+```
+
+`pacific-observed.txt` es una observación histórica recortada. `pacific-locked-synthetic.txt` simula un visor bloqueado: **no** es una captura anterior al desbloqueo. Una etiqueta de origen identifica la muestra, no autentica su procedencia. Los campos ausentes salen como `null` y no cuentan como `false`. Sigue el [protocolo experimental independiente](EXPERIMENTS.md) para interpretar coincidencias, discrepancias y controles sin confundirlos con una medición de fusibles.
